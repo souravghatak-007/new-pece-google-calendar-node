@@ -1,0 +1,25 @@
+{
+    "name": "pece-google-calendar-node",
+    "version": "1.0.0",
+    "description": "",
+    "main": "handler.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^8.2.0",
+        "googleapis": "^67.0.0",
+        "jsonwebtoken": "^8.5.1",
+        "moment": "^2.24.0",
+        "moment-range": "^4.0.2",
+        "moment-timezone": "^0.5.28",
+        "mongoose": "^5.11.13",
+        "request": "^2.88.2",
+        "path": "^0.12.7",
+        "aws-sdk": "^2.700.0",
+        "fs": "0.0.1-security",
+        "serverless-offline": "^6.8.0"
+    }
+}
