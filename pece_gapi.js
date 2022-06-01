@@ -271,18 +271,13 @@ exports.googlecalendarevent = (event, context, callback) => {
             "grant_type": "refresh_token"
         }
     }, function (error, response, body) {
-
-        console.log('body====', body, 'response++++', response, 'err', error, response.body)
-
-        console.log(response.body, '+++++++++++++++++++++++')
-
+        // console.log('body====', body, 'response++++', response, 'err', error, response.body)
+        // console.log(response.body, '+++++++++++++++++++++++')
         let responseData = JSON.parse(response.body);
-
-        console.log(responseData.access_token, '??????????????/')
-
+        // console.log(responseData.access_token, '??????????????/')
         if (responseData.access_token != null && responseData.access_token != '') {
 
-            console.log('success', 's++++')
+            // console.log('success', 's++++')
 
             oauth2Client.credentials = JSON.parse(response.body);
 
@@ -330,6 +325,8 @@ function listEvents(auth, req, callback) {
         if (events.length) {
             console.log('Upcoming 10 events:');
             events.map((event, i) => {
+                console.log(' event.start.dateTime ' +  event.start.dateTime);
+                console.log(' event.start.date ' + event.start.date);
                 const start = event.start.dateTime || event.start.date;
                 console.log(`${start} - ${event.summary}`);
             });
