@@ -53,7 +53,7 @@ functions:
     handler: pece_gapi.gapi
     events:
       - http:
-          path: getauthorization-pece
+          path: calender-pece-auth
           method: get
           cors: true
   getgapicode:

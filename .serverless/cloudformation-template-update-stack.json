@@ -59,37 +59,37 @@
     "PeceUnderscoregapiUnderscoregapiLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/pece-google-calendar-node-production-pece_gapi_gapi"
+        "LogGroupName": "/aws/lambda/pece-google-calendar-node-dev-pece_gapi_gapi"
       }
     },
     "GapiLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/pece-google-calendar-node-production-gapi"
+        "LogGroupName": "/aws/lambda/pece-google-calendar-node-dev-gapi"
       }
     },
     "GetgapicodeLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/pece-google-calendar-node-production-getgapicode"
+        "LogGroupName": "/aws/lambda/pece-google-calendar-node-dev-getgapicode"
       }
     },
     "UpdateGoogleApiTokenLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/pece-google-calendar-node-production-updateGoogleApiToken"
+        "LogGroupName": "/aws/lambda/pece-google-calendar-node-dev-updateGoogleApiToken"
       }
     },
     "UpdategoogleconnectemailLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/pece-google-calendar-node-production-updategoogleconnectemail"
+        "LogGroupName": "/aws/lambda/pece-google-calendar-node-dev-updategoogleconnectemail"
       }
     },
     "GooglecalendareventLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/pece-google-calendar-node-production-googlecalendarevent"
+        "LogGroupName": "/aws/lambda/pece-google-calendar-node-dev-googlecalendarevent"
       }
     },
     "IamRoleLambdaExecution": {
@@ -117,7 +117,7 @@
               "Fn::Join": [
                 "-",
                 [
-                  "pece-google-calendar-node-production",
+                  "pece-google-calendar-node-dev",
                   "lambda"
                 ]
               ]
@@ -133,7 +133,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/pece-google-calendar-node-production*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/pece-google-calendar-node-dev*:*"
                     }
                   ]
                 },
@@ -144,7 +144,7 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/pece-google-calendar-node-production*:*:*"
+                      "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/pece-google-calendar-node-dev*:*:*"
                     }
                   ]
                 },
@@ -165,7 +165,7 @@
           "Fn::Join": [
             "-",
             [
-              "pece-google-calendar-node-production",
+              "pece-google-calendar-node-dev",
               {
                 "Ref": "AWS::Region"
               },
@@ -182,9 +182,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/pece-google-calendar-node/production/1617277650481-2021-04-01T11:47:30.481Z/pece-google-calendar-node.zip"
+          "S3Key": "serverless/pece-google-calendar-node/dev/1654068712065-2022-06-01T07:31:52.065Z/pece-google-calendar-node.zip"
         },
-        "FunctionName": "pece-google-calendar-node-production-pece_gapi_gapi",
+        "FunctionName": "pece-google-calendar-node-dev-pece_gapi_gapi",
         "Handler": "pece_gapi.auth",
         "MemorySize": 128,
         "Role": {
@@ -197,7 +197,7 @@
         "Timeout": 30,
         "Environment": {
           "Variables": {
-            "NODE_ENV": "production",
+            "NODE_ENV": "dev",
             "DB": "mongodb+srv://fileuploads:Devthecoder7*@cluster0-y0s0t.mongodb.net/betoparedes_backend?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
             "DB_dev": "mongodb+srv://aws-backend-dev:Devthecoder7*@cluster0-holxc.mongodb.net/admin?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
             "DB_production": "mongodb+srv://aws-backend-dev:Devthecoder7*@cluster0-holxc.mongodb.net/admin?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
@@ -216,9 +216,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/pece-google-calendar-node/production/1617277650481-2021-04-01T11:47:30.481Z/pece-google-calendar-node.zip"
+          "S3Key": "serverless/pece-google-calendar-node/dev/1654068712065-2022-06-01T07:31:52.065Z/pece-google-calendar-node.zip"
         },
-        "FunctionName": "pece-google-calendar-node-production-gapi",
+        "FunctionName": "pece-google-calendar-node-dev-gapi",
         "Handler": "pece_gapi.gapi",
         "MemorySize": 128,
         "Role": {
@@ -231,7 +231,7 @@
         "Timeout": 30,
         "Environment": {
           "Variables": {
-            "NODE_ENV": "production",
+            "NODE_ENV": "dev",
             "DB": "mongodb+srv://fileuploads:Devthecoder7*@cluster0-y0s0t.mongodb.net/betoparedes_backend?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
             "DB_dev": "mongodb+srv://aws-backend-dev:Devthecoder7*@cluster0-holxc.mongodb.net/admin?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
             "DB_production": "mongodb+srv://aws-backend-dev:Devthecoder7*@cluster0-holxc.mongodb.net/admin?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
@@ -250,9 +250,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/pece-google-calendar-node/production/1617277650481-2021-04-01T11:47:30.481Z/pece-google-calendar-node.zip"
+          "S3Key": "serverless/pece-google-calendar-node/dev/1654068712065-2022-06-01T07:31:52.065Z/pece-google-calendar-node.zip"
         },
-        "FunctionName": "pece-google-calendar-node-production-getgapicode",
+        "FunctionName": "pece-google-calendar-node-dev-getgapicode",
         "Handler": "pece_gapi.getgapicode",
         "MemorySize": 128,
         "Role": {
@@ -265,7 +265,7 @@
         "Timeout": 30,
         "Environment": {
           "Variables": {
-            "NODE_ENV": "production",
+            "NODE_ENV": "dev",
             "DB": "mongodb+srv://fileuploads:Devthecoder7*@cluster0-y0s0t.mongodb.net/betoparedes_backend?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
             "DB_dev": "mongodb+srv://aws-backend-dev:Devthecoder7*@cluster0-holxc.mongodb.net/admin?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
             "DB_production": "mongodb+srv://aws-backend-dev:Devthecoder7*@cluster0-holxc.mongodb.net/admin?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
@@ -284,9 +284,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/pece-google-calendar-node/production/1617277650481-2021-04-01T11:47:30.481Z/pece-google-calendar-node.zip"
+          "S3Key": "serverless/pece-google-calendar-node/dev/1654068712065-2022-06-01T07:31:52.065Z/pece-google-calendar-node.zip"
         },
-        "FunctionName": "pece-google-calendar-node-production-updateGoogleApiToken",
+        "FunctionName": "pece-google-calendar-node-dev-updateGoogleApiToken",
         "Handler": "pece_gapi.updateGoogleApiToken",
         "MemorySize": 128,
         "Role": {
@@ -299,7 +299,7 @@
         "Timeout": 30,
         "Environment": {
           "Variables": {
-            "NODE_ENV": "production",
+            "NODE_ENV": "dev",
             "DB": "mongodb+srv://fileuploads:Devthecoder7*@cluster0-y0s0t.mongodb.net/betoparedes_backend?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
             "DB_dev": "mongodb+srv://aws-backend-dev:Devthecoder7*@cluster0-holxc.mongodb.net/admin?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
             "DB_production": "mongodb+srv://aws-backend-dev:Devthecoder7*@cluster0-holxc.mongodb.net/admin?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
@@ -318,9 +318,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/pece-google-calendar-node/production/1617277650481-2021-04-01T11:47:30.481Z/pece-google-calendar-node.zip"
+          "S3Key": "serverless/pece-google-calendar-node/dev/1654068712065-2022-06-01T07:31:52.065Z/pece-google-calendar-node.zip"
         },
-        "FunctionName": "pece-google-calendar-node-production-updategoogleconnectemail",
+        "FunctionName": "pece-google-calendar-node-dev-updategoogleconnectemail",
         "Handler": "pece_gapi.updategoogleconnectemail",
         "MemorySize": 128,
         "Role": {
@@ -333,7 +333,7 @@
         "Timeout": 30,
         "Environment": {
           "Variables": {
-            "NODE_ENV": "production",
+            "NODE_ENV": "dev",
             "DB": "mongodb+srv://fileuploads:Devthecoder7*@cluster0-y0s0t.mongodb.net/betoparedes_backend?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
             "DB_dev": "mongodb+srv://aws-backend-dev:Devthecoder7*@cluster0-holxc.mongodb.net/admin?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
             "DB_production": "mongodb+srv://aws-backend-dev:Devthecoder7*@cluster0-holxc.mongodb.net/admin?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
@@ -352,9 +352,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/pece-google-calendar-node/production/1617277650481-2021-04-01T11:47:30.481Z/pece-google-calendar-node.zip"
+          "S3Key": "serverless/pece-google-calendar-node/dev/1654068712065-2022-06-01T07:31:52.065Z/pece-google-calendar-node.zip"
         },
-        "FunctionName": "pece-google-calendar-node-production-googlecalendarevent",
+        "FunctionName": "pece-google-calendar-node-dev-googlecalendarevent",
         "Handler": "pece_gapi.googlecalendarevent",
         "MemorySize": 128,
         "Role": {
@@ -367,7 +367,7 @@
         "Timeout": 30,
         "Environment": {
           "Variables": {
-            "NODE_ENV": "production",
+            "NODE_ENV": "dev",
             "DB": "mongodb+srv://fileuploads:Devthecoder7*@cluster0-y0s0t.mongodb.net/betoparedes_backend?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
             "DB_dev": "mongodb+srv://aws-backend-dev:Devthecoder7*@cluster0-holxc.mongodb.net/admin?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true",
             "DB_production": "mongodb+srv://aws-backend-dev:Devthecoder7*@cluster0-holxc.mongodb.net/admin?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true"
@@ -382,7 +382,7 @@
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "production-pece-google-calendar-node",
+        "Name": "dev-pece-google-calendar-node",
         "EndpointConfiguration": {
           "Types": [
             "EDGE"
@@ -418,7 +418,7 @@
         }
       }
     },
-    "ApiGatewayResourceGetauthorizationDashpece": {
+    "ApiGatewayResourceCalenderDashpeceDashauth": {
       "Type": "AWS::ApiGateway::Resource",
       "Properties": {
         "ParentId": {
@@ -427,7 +427,7 @@
             "RootResourceId"
           ]
         },
-        "PathPart": "getauthorization-pece",
+        "PathPart": "calender-pece-auth",
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         }
@@ -535,7 +535,7 @@
         }
       }
     },
-    "ApiGatewayMethodGetauthorizationDashpeceOptions": {
+    "ApiGatewayMethodCalenderDashpeceDashauthOptions": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "AuthorizationType": "NONE",
@@ -573,7 +573,7 @@
           ]
         },
         "ResourceId": {
-          "Ref": "ApiGatewayResourceGetauthorizationDashpece"
+          "Ref": "ApiGatewayResourceCalenderDashpeceDashauth"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -803,13 +803,13 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayMethodGetauthorizationDashpeceGet": {
+    "ApiGatewayMethodCalenderDashpeceDashauthGet": {
       "Type": "AWS::ApiGateway::Method",
       "Properties": {
         "HttpMethod": "GET",
         "RequestParameters": {},
         "ResourceId": {
-          "Ref": "ApiGatewayResourceGetauthorizationDashpece"
+          "Ref": "ApiGatewayResourceCalenderDashpeceDashauth"
         },
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
@@ -1018,23 +1018,23 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1617277642057": {
+    "ApiGatewayDeployment1654068702798": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
           "Ref": "ApiGatewayRestApi"
         },
-        "StageName": "production"
+        "StageName": "dev"
       },
       "DependsOn": [
         "ApiGatewayMethodPeceDashgoogleDashcalendarPathVarOptions",
-        "ApiGatewayMethodGetauthorizationDashpeceOptions",
+        "ApiGatewayMethodCalenderDashpeceDashauthOptions",
         "ApiGatewayMethodPeceDashgoogleDashcalendarOptions",
         "ApiGatewayMethodUpdategoogleapitokenOptions",
         "ApiGatewayMethodUpdategoogleconnectemailOptions",
         "ApiGatewayMethodGoogleDashcalendarDasheventPathVarOptions",
         "ApiGatewayMethodPeceDashgoogleDashcalendarPathVarAny",
-        "ApiGatewayMethodGetauthorizationDashpeceGet",
+        "ApiGatewayMethodCalenderDashpeceDashauthGet",
         "ApiGatewayMethodPeceDashgoogleDashcalendarGet",
         "ApiGatewayMethodUpdategoogleapitokenPost",
         "ApiGatewayMethodUpdategoogleconnectemailPost",
@@ -1288,7 +1288,7 @@
             {
               "Ref": "AWS::URLSuffix"
             },
-            "/production"
+            "/dev"
           ]
         ]
       }

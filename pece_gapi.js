@@ -31,10 +31,13 @@ var headers = {
 
 
 let gapi_url;
+let redirecturl
 
 if (process.env.NODE_ENV == 'dev') {
+    redirecturl = "https://88xgiycoeg.execute-api.us-east-1.amazonaws.com/dev/getauthorization-pece-calender";
     gapi_url = 'https://dev.gapi.peceportal.com/getauthorization-pece';
 } else {
+    redirecturl = "https://88xgiycoeg.execute-api.us-east-1.amazonaws.com/production/getauthorization-pece-calender";
     gapi_url = 'https://gapi.peceportal.com/getauthorization-pece';
 }
 
@@ -81,11 +84,21 @@ module.exports.auth = (event, context, callback) => {
 // get code from google (1)
 exports.getgapicode = async (event) => {
     console.log('hit for code')
-    console.log(gapi_url)
+    // '853332811546-dp715m8offmbeh9c1scb34ddb0pup7rc.apps.googleusercontent.com',
+    //     'qCJj8c3uljSs23k-AvMUnZZ9',
+    // https://dev.gapi.peceportal.com/getauthorization-pece
+    let peceredirecturl="";
+    if (process.env.NODE_ENV == 'dev') {
+        peceredirecturl = "https://88xgiycoeg.execute-api.us-east-1.amazonaws.com/dev/calender-pece-auth";
+    } else {
+        peceredirecturl = "https://88xgiycoeg.execute-api.us-east-1.amazonaws.com/production/calender-pece-auth";
+    }
+    console.log(peceredirecturl)
+
     const oauth2Client = new google.auth.OAuth2(
-        '853332811546-dp715m8offmbeh9c1scb34ddb0pup7rc.apps.googleusercontent.com',
-        'qCJj8c3uljSs23k-AvMUnZZ9',
-        gapi_url
+        '250468463154-spudurgmv24pc8ok059827u3ahr2qpb2.apps.googleusercontent.com',
+        'qD8oMF-tHcl3QlxdV2UoNKj_',
+        peceredirecturl
     );
 
     const url = oauth2Client.generateAuthUrl({
@@ -153,20 +166,25 @@ exports.updateGoogleApiToken = (event, context, callback) => {
     var user_id = mongoose.Types.ObjectId(req.user_id);
 
     var redirect_url = 'https://backoffice.troywenning.com/calendar-management/calendar' + '?' + 'code=' + req.gapi_access_code;
-
+    let peceredirecturl="";
+    if (process.env.NODE_ENV == 'dev') {
+        peceredirecturl = "https://88xgiycoeg.execute-api.us-east-1.amazonaws.com/dev/calender-pece-auth";
+    } else {
+        peceredirecturl = "https://88xgiycoeg.execute-api.us-east-1.amazonaws.com/production/calender-pece-auth";
+    }
     // console.log(code, 'hit with code  ===?  addGoogleApiToken')
 
     request.post({
         url: 'https://www.googleapis.com/oauth2/v4/token',
         form: {
             "code": req.gapi_access_code,
-            "redirect_uri": gapi_url,
-            "client_id": "853332811546-dp715m8offmbeh9c1scb34ddb0pup7rc.apps.googleusercontent.com",
-            "client_secret": "qCJj8c3uljSs23k-AvMUnZZ9",
+            "redirect_uri": peceredirecturl,
+            "client_id": "250468463154-spudurgmv24pc8ok059827u3ahr2qpb2.apps.googleusercontent.com",
+            "client_secret": "qD8oMF-tHcl3QlxdV2UoNKj_",
             "grant_type": "authorization_code"
         }
     }, function (error, response, body) {
-        console.log(response.body,'xxxxxxx')
+        console.log(response.body, 'xxxxxxx')
 
         const resData = JSON.parse(response.body);
 
@@ -325,7 +343,7 @@ function listEvents(auth, req, callback) {
         if (events.length) {
             console.log('Upcoming 10 events:');
             events.map((event, i) => {
-                console.log(' event.start.dateTime ' +  event.start.dateTime);
+                console.log(' event.start.dateTime ' + event.start.dateTime);
                 console.log(' event.start.date ' + event.start.date);
                 const start = event.start.dateTime || event.start.date;
                 console.log(`${start} - ${event.summary}`);
